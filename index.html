@@ -1,571 +1,1029 @@
 <!DOCTYPE html>
 <html lang="id">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Bima Freelance - Jasa Pembuatan Website Profesional</title>
-    <style>
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-        }
-
-        body {
-            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-            line-height: 1.6;
-            color: #333;
-            overflow-x: hidden;
-        }
-
-        .container {
-            max-width: 1200px;
-            margin: 0 auto;
-            padding: 0 20px;
-        }
-
-        /* Header */
-        header {
-            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
-            color: white;
-            padding: 1rem 0;
-            position: fixed;
-            width: 100%;
-            top: 0;
-            z-index: 1000;
-            backdrop-filter: blur(10px);
-            box-shadow: 0 2px 20px rgba(0,0,0,0.1);
-        }
-
-        nav {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-        }
-
-        .logo {
-            font-size: 1.8rem;
-            font-weight: bold;
-            text-shadow: 2px 2px 4px rgba(0,0,0,0.3);
-        }
-
-        /* Hero Section */
-        .hero {
-            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
-            color: white;
-            padding: 120px 0 80px;
-            text-align: center;
-            position: relative;
-            overflow: hidden;
-        }
-
-        .hero::before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: 0;
-            right: 0;
-            bottom: 0;
-            background: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1000 1000"><polygon fill="rgba(255,255,255,0.05)" points="0,1000 1000,800 1000,1000"/></svg>');
-            background-size: cover;
-        }
-
-        .hero-content {
-            position: relative;
-            z-index: 2;
-        }
-
-        .hero h1 {
-            font-size: 3.5rem;
-            margin-bottom: 1rem;
-            text-shadow: 2px 2px 4px rgba(0,0,0,0.3);
-            animation: fadeInUp 1s ease-out;
-        }
-
-        .hero p {
-            font-size: 1.3rem;
-            margin-bottom: 2rem;
-            opacity: 0.9;
-            animation: fadeInUp 1s ease-out 0.2s both;
-        }
-
-        .cta-button {
-            display: inline-block;
-            background: linear-gradient(45deg, #ff6b6b, #ffa500);
-            color: white;
-            padding: 15px 40px;
-            text-decoration: none;
-            border-radius: 50px;
-            font-weight: bold;
-            font-size: 1.1rem;
-            transition: all 0.3s ease;
-            animation: fadeInUp 1s ease-out 0.4s both;
-            box-shadow: 0 5px 20px rgba(255, 107, 107, 0.4);
-        }
-
-        .cta-button:hover {
-            transform: translateY(-3px);
-            box-shadow: 0 8px 25px rgba(255, 107, 107, 0.6);
-        }
-
-        /* Features Section */
-        .features {
-            padding: 80px 0;
-            background: #f8f9fa;
-        }
-
-        .section-title {
-            text-align: center;
-            font-size: 2.5rem;
-            margin-bottom: 3rem;
-            color: #333;
-        }
-
-        .features-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-            gap: 2rem;
-            margin-top: 3rem;
-        }
-
-        .feature-card {
-            background: white;
-            padding: 2rem;
-            border-radius: 15px;
-            text-align: center;
-            box-shadow: 0 10px 30px rgba(0,0,0,0.1);
-            transition: all 0.3s ease;
-            border-top: 4px solid #667eea;
-        }
-
-        .feature-card:hover {
-            transform: translateY(-10px);
-            box-shadow: 0 20px 40px rgba(0,0,0,0.15);
-        }
-
-        .feature-icon {
-            font-size: 3rem;
-            margin-bottom: 1rem;
-            color: #667eea;
-        }
-
-        .feature-card h3 {
-            font-size: 1.5rem;
-            margin-bottom: 1rem;
-            color: #333;
-        }
-
-        /* Services Section */
-        .services {
-            padding: 80px 0;
-            background: white;
-        }
-
-        .services-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-            gap: 1.5rem;
-            margin-top: 3rem;
-        }
-
-        .service-item {
-            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
-            color: white;
-            padding: 2rem;
-            border-radius: 15px;
-            text-align: center;
-            transition: all 0.3s ease;
-            position: relative;
-            overflow: hidden;
-        }
-
-        .service-item::before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: -100%;
-            width: 100%;
-            height: 100%;
-            background: linear-gradient(90deg, transparent, rgba(255,255,255,0.2), transparent);
-            transition: left 0.5s;
-        }
-
-        .service-item:hover::before {
-            left: 100%;
-        }
-
-        .service-item:hover {
-            transform: scale(1.05);
-        }
-
-        /* Pricing Section */
-        .pricing {
-            padding: 80px 0;
-            background: #f8f9fa;
-        }
-
-        .pricing-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-            gap: 2rem;
-            margin-top: 3rem;
-        }
-
-        .pricing-card {
-            background: white;
-            border-radius: 20px;
-            padding: 2rem;
-            text-align: center;
-            box-shadow: 0 15px 35px rgba(0,0,0,0.1);
-            transition: all 0.3s ease;
-            position: relative;
-            overflow: hidden;
-        }
-
-        .pricing-card:hover {
-            transform: translateY(-10px);
-            box-shadow: 0 25px 50px rgba(0,0,0,0.15);
-        }
-
-        .pricing-card.featured {
-            border: 3px solid #667eea;
-            transform: scale(1.05);
-        }
-
-        .pricing-card.featured::before {
-            content: 'TERPOPULER';
-            position: absolute;
-            top: 20px;
-            right: -35px;
-            background: #ff6b6b;
-            color: white;
-            padding: 5px 40px;
-            font-size: 0.8rem;
-            font-weight: bold;
-            transform: rotate(45deg);
-        }
-
-        .price {
-            font-size: 2.5rem;
-            font-weight: bold;
-            color: #667eea;
-            margin: 1rem 0;
-        }
-
-        .pricing-features {
-            list-style: none;
-            margin: 2rem 0;
-        }
-
-        .pricing-features li {
-            padding: 0.5rem 0;
-            border-bottom: 1px solid #eee;
-        }
-
-        .pricing-features li:last-child {
-            border-bottom: none;
-        }
-
-        /* Testimonials */
-        .testimonials {
-            padding: 80px 0;
-            background: white;
-        }
-
-        .testimonials-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-            gap: 2rem;
-            margin-top: 3rem;
-        }
-
-        .testimonial-card {
-            background: #f8f9fa;
-            padding: 2rem;
-            border-radius: 15px;
-            position: relative;
-            box-shadow: 0 10px 30px rgba(0,0,0,0.05);
-        }
-
-        .testimonial-card::before {
-            content: '"';
-            font-size: 4rem;
-            color: #667eea;
-            position: absolute;
-            top: -10px;
-            left: 20px;
-            opacity: 0.3;
-        }
-
-        .testimonial-author {
-            margin-top: 1rem;
-            font-weight: bold;
-            color: #667eea;
-        }
-
-        /* Footer */
-        footer {
-            background: linear-gradient(135deg, #333 0%, #555 100%);
-            color: white;
-            padding: 60px 0 20px;
-            text-align: center;
-        }
-
-        .footer-content {
-            margin-bottom: 2rem;
-        }
-
-        .footer-links {
-            display: flex;
-            justify-content: center;
-            gap: 2rem;
-            margin-bottom: 2rem;
-        }
-
-        .footer-links a {
-            color: white;
-            text-decoration: none;
-            transition: color 0.3s ease;
-        }
-
-        .footer-links a:hover {
-            color: #667eea;
-        }
-
-        /* Animations */
-        @keyframes fadeInUp {
-            from {
-                opacity: 0;
-                transform: translateY(30px);
-            }
-            to {
-                opacity: 1;
-                transform: translateY(0);
-            }
-        }
-
-        .fade-in {
-            animation: fadeInUp 1s ease-out;
-        }
-
-        /* Responsive */
-        @media (max-width: 768px) {
-            .hero h1 {
-                font-size: 2.5rem;
-            }
-            
-            .hero p {
-                font-size: 1.1rem;
-            }
-            
-            .section-title {
-                font-size: 2rem;
-            }
-            
-            .features-grid,
-            .services-grid,
-            .pricing-grid,
-            .testimonials-grid {
-                grid-template-columns: 1fr;
-            }
-            
-            .pricing-card.featured {
-                transform: none;
-            }
-        }
-    </style>
-</head>
-<body>
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>
+      BimaFreelance - Web Developer Profesional | Jasa Pembuatan Website
+      Terpercaya
+    </title>
+    <meta
+      name="description"
+      content="Jasa pembuatan website profesional dengan portofolio terpercaya. Spesialisasi landing page, e-commerce, dan company profile. Hasil berkualitas, harga terjangkau."
+    />
+    <link rel="stylesheet" href="style.css" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap"
+      rel="stylesheet"
+    />
+  </head>
+  <body>
     <!-- Header -->
-    <header>
-        <nav class="container">
-            <div class="logo">Bima Freelance</div>
-        </nav>
+    <header class="header">
+      <nav class="nav container">
+        <div class="nav__brand">
+          <svg
+            class="nav__logo"
+            viewBox="0 0 50 50"
+            fill="none"
+            xmlns="http://www.w3.org/2000/svg"
+          >
+            <circle
+              cx="25"
+              cy="25"
+              r="23"
+              stroke="currentColor"
+              stroke-width="2"
+            />
+            <path
+              d="M15 20h10v3H15v-3zm0 5h15v3H15v-3zm0 5h12v3H15v-3z"
+              fill="currentColor"
+            />
+            <circle cx="35" cy="15" r="3" fill="currentColor" />
+          </svg>
+          <span class="nav__title">BimaFreelance</span>
+        </div>
+        <div class="nav__menu" id="nav-menu">
+          <ul class="nav__list">
+            <li class="nav__item">
+              <a href="#home" class="nav__link">Home</a>
+            </li>
+            <li class="nav__item">
+              <a href="#portfolio" class="nav__link">Portfolio</a>
+            </li>
+            <li class="nav__item">
+              <a href="#services" class="nav__link">Layanan</a>
+            </li>
+            <li class="nav__item">
+              <a href="#pricing" class="nav__link">Harga</a>
+            </li>
+            <li class="nav__item">
+              <a href="#testimonials" class="nav__link">Testimoni</a>
+            </li>
+          </ul>
+          <a
+            href="https://wa.me/6289663164143?text=Halo%20Bima%2C%20saya%20tertarik%20dengan%20jasa%20website%20Anda"
+            class="nav__cta"
+            >Konsultasi Gratis</a
+          >
+        </div>
+        <div class="nav__toggle" id="nav-toggle">
+          <span></span>
+          <span></span>
+          <span></span>
+        </div>
+      </nav>
     </header>
 
     <!-- Hero Section -->
-    <section class="hero">
-        <div class="container">
-            <div class="hero-content">
-                <h1>Bikin Website Cepat, Murah, dan Profesional</h1>
-                <p>Dapatkan website impian Anda dengan kualitas terbaik, harga terjangkau, dan waktu pengerjaan yang cepat. Sudah dipercaya 100+ klien!</p>
-                <a href="https://wa.me/6289663164143?text=Halo%20Bima%2C%20saya%20tertarik%20dengan%20jasa%20website%20Anda" class="cta-button">Konsultasi Gratis Sekarang</a>
+    <section class="hero" id="home">
+      <div class="hero__container container">
+        <div class="hero__content">
+          <div class="hero__badge">
+            <span>✨ Trusted by 150+ Clients</span>
+          </div>
+          <h1 class="hero__title">
+            Wujudkan Website
+            <span class="hero__highlight">Impian Bisnis</span> Anda Bersama
+            Developer Terpercaya
+          </h1>
+          <p class="hero__description">
+            Spesialis pembuatan website profesional dengan portofolio nyata dan
+            hasil yang memukau. Dari landing page hingga e-commerce, kami hadir
+            untuk mengembangkan bisnis digital Anda.
+          </p>
+          <div class="hero__stats">
+            <div class="hero__stat">
+              <span class="hero__stat-number">150+</span>
+              <span class="hero__stat-text">Project Selesai</span>
             </div>
+            <div class="hero__stat">
+              <span class="hero__stat-number">98%</span>
+              <span class="hero__stat-text">Client Puas</span>
+            </div>
+            <div class="hero__stat">
+              <span class="hero__stat-number">3-7</span>
+              <span class="hero__stat-text">Hari Selesai</span>
+            </div>
+          </div>
+          <div class="hero__actions">
+            <a href="#portfolio" class="btn btn--primary">Lihat Portfolio</a>
+            <a
+              href="https://wa.me/6289663164143?text=Halo%20Bima%2C%20saya%20ingin%20konsultasi%20gratis"
+              class="btn btn--secondary"
+            >
+              <svg
+                width="20"
+                height="20"
+                viewBox="0 0 24 24"
+                fill="currentColor"
+              >
+                <path
+                  d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893A11.821 11.821 0 0020.465 3.516"
+                />
+              </svg>
+              WhatsApp
+            </a>
+          </div>
         </div>
+        <div class="hero__visual">
+          <div class="hero__mockup">
+            <div class="mockup__browser">
+              <div class="browser__header">
+                <div class="browser__dots">
+                  <span></span>
+                  <span></span>
+                  <span></span>
+                </div>
+                <div class="browser__url">bimafreelance.site</div>
+              </div>
+              <div class="browser__content">
+                <div class="preview__website">
+                  <div class="preview__header"></div>
+                  <div class="preview__hero"></div>
+                  <div class="preview__sections">
+                    <div class="preview__section"></div>
+                    <div class="preview__section"></div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
     </section>
 
-    <!-- Features Section -->
-    <section class="features">
-        <div class="container">
-            <h2 class="section-title">Mengapa Pilih Bima Freelance?</h2>
-            <div class="features-grid">
-                <div class="feature-card">
-                    <div class="feature-icon">📱</div>
-                    <h3>Desain Responsif</h3>
-                    <p>Website yang tampil sempurna di semua perangkat - desktop, tablet, dan mobile. Pengalaman pengguna yang optimal di mana saja.</p>
-                </div>
-                <div class="feature-card">
-                    <div class="feature-icon">🚀</div>
-                    <h3>SEO Friendly</h3>
-                    <p>Website yang dioptimasi untuk mesin pencari Google. Bisnis Anda lebih mudah ditemukan oleh calon pelanggan.</p>
-                </div>
-                <div class="feature-card">
-                    <div class="feature-icon">⚡</div>
-                    <h3>Proses Cepat</h3>
-                    <p>Pengerjaan website dalam waktu 3-7 hari. Revisi unlimited hingga Anda puas dengan hasil akhirnya.</p>
-                </div>
-            </div>
+    <!-- Portfolio Showcase -->
+    <section class="portfolio" id="portfolio">
+      <div class="container">
+        <div class="section__header">
+          <span class="section__badge">Portfolio</span>
+          <h2 class="section__title">Project Nyata dengan Hasil Memukau</h2>
+          <p class="section__description">
+            Lihat berbagai website yang telah kami kerjakan untuk klien dari
+            berbagai industri. Setiap project dibuat dengan standar profesional
+            dan disesuaikan dengan kebutuhan bisnis.
+          </p>
         </div>
+
+        <div class="portfolio__filter">
+          <button class="filter__btn filter__btn--active" data-filter="all">
+            Semua Project
+          </button>
+          <button class="filter__btn" data-filter="landing">
+            Landing Page
+          </button>
+          <button class="filter__btn" data-filter="ecommerce">
+            E-commerce
+          </button>
+          <button class="filter__btn" data-filter="company">
+            Company Profile
+          </button>
+          <button class="filter__btn" data-filter="portfolio">Portfolio</button>
+        </div>
+
+        <div class="portfolio__grid">
+          <div class="portfolio__item" data-category="ecommerce">
+            <div class="portfolio__image">
+              <img
+                src="assets/img/freelance1.jpg"
+                alt="Toko Online Fashion Modern"
+                loading="lazy"
+              />
+              <div class="portfolio__overlay">
+                <div class="portfolio__info">
+                  <h3>Toko Online Fashion</h3>
+                  <p>E-commerce modern dengan sistem pembayaran lengkap</p>
+                  <div class="portfolio__tags">
+                    <span>E-commerce</span>
+                    <span>Payment Gateway</span>
+                    <span>Mobile Responsive</span>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div class="portfolio__item" data-category="company">
+            <div class="portfolio__image">
+              <img
+                src="assets/img/freelance2.jpg"
+                alt="Company Profile Tech Startup"
+                loading="lazy"
+              />
+              <div class="portfolio__overlay">
+                <div class="portfolio__info">
+                  <h3>Tech Startup Company</h3>
+                  <p>Company profile dengan animasi interaktif</p>
+                  <div class="portfolio__tags">
+                    <span>Company Profile</span>
+                    <span>Interactive</span>
+                    <span>Modern Design</span>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div class="portfolio__item" data-category="landing">
+            <div class="portfolio__image">
+              <img
+                src="assets/img/freelance7.jpg"
+                alt="Landing Page Produk Digital"
+                loading="lazy"
+              />
+              <div class="portfolio__overlay">
+                <div class="portfolio__info">
+                  <h3>Digital Product Launch</h3>
+                  <p>Landing page dengan conversion rate tinggi</p>
+                  <div class="portfolio__tags">
+                    <span>Landing Page</span>
+                    <span>High Conversion</span>
+                    <span>A/B Tested</span>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div class="portfolio__item" data-category="portfolio">
+            <div class="portfolio__image">
+              <img
+                src="assets/img/freelance4.jpg"
+                alt="Portfolio Fotografer"
+                loading="lazy"
+              />
+              <div class="portfolio__overlay">
+                <div class="portfolio__info">
+                  <h3>Photographer Portfolio</h3>
+                  <p>Portfolio website dengan galeri yang elegan</p>
+                  <div class="portfolio__tags">
+                    <span>Portfolio</span>
+                    <span>Gallery</span>
+                    <span>Lightbox</span>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div class="portfolio__item" data-category="ecommerce">
+            <div class="portfolio__image">
+              <img
+                src="assets/img/freelance5.jpg"
+                alt="Marketplace Makanan"
+                loading="lazy"
+              />
+              <div class="portfolio__overlay">
+                <div class="portfolio__info">
+                  <h3>Food Marketplace</h3>
+                  <p>Platform marketplace dengan multi-vendor</p>
+                  <div class="portfolio__tags">
+                    <span>Marketplace</span>
+                    <span>Multi-vendor</span>
+                    <span>Food Delivery</span>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div class="portfolio__item" data-category="company">
+            <div class="portfolio__image">
+              <img
+                src="assets/img/freelance6.jpg"
+                alt="Photography Train Enthusiast"
+                loading="lazy"
+              />
+              <div class="portfolio__overlay">
+                <div class="portfolio__info">
+                  <h3>Photography Train Enthusiast</h3>
+                  <p>Hobi Foto Kereta</p>
+                  <div class="portfolio__tags">
+                    <span>Hobby</span>
+                    <span>Pameran</span>
+                    <span>SEO Friendly</span>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="portfolio__cta">
+          <p>Ingin melihat lebih banyak project?</p>
+          <a href="https://bimaadam.fun" class="btn btn--outline"
+            >Lihat Portfolio Lengkap</a
+          >
+        </div>
+      </div>
     </section>
 
     <!-- Services Section -->
-    <section class="services">
-        <div class="container">
-            <h2 class="section-title">Layanan Kami</h2>
-            <div class="services-grid">
-                <div class="service-item">
-                    <h3>Website Portofolio</h3>
-                    <p>Tampilkan karya dan keahlian Anda dengan website portofolio yang menarik dan profesional.</p>
-                </div>
-                <div class="service-item">
-                    <h3>Toko Online</h3>
-                    <p>Mulai bisnis online Anda dengan toko online yang lengkap dengan sistem pembayaran dan manajemen produk.</p>
-                </div>
-                <div class="service-item">
-                    <h3>Landing Page Promosi</h3>
-                    <p>Landing page yang converting tinggi untuk campaign marketing dan promosi produk atau jasa Anda.</p>
-                </div>
-                <div class="service-item">
-                    <h3>Website Company Profile</h3>
-                    <p>Website perusahaan yang mencerminkan profesionalitas dan kredibilitas bisnis Anda.</p>
-                </div>
-                <div class="service-item">
-                    <h3>Blog Pribadi</h3>
-                    <p>Platform blog yang user-friendly untuk berbagi ide, pengalaman, dan membangun personal branding.</p>
-                </div>
-            </div>
+    <section class="services" id="services">
+      <div class="container">
+        <div class="section__header">
+          <span class="section__badge">Layanan</span>
+          <h2 class="section__title">
+            Solusi Website untuk Setiap Kebutuhan Bisnis
+          </h2>
+          <p class="section__description">
+            Dari konsep hingga launching, kami menyediakan layanan lengkap untuk
+            menghadirkan website yang tidak hanya indah dipandang, tapi juga
+            efektif untuk bisnis Anda.
+          </p>
         </div>
+
+        <div class="services__grid">
+          <div class="service__card">
+            <div class="service__icon">
+              <svg
+                viewBox="0 0 24 24"
+                fill="none"
+                xmlns="http://www.w3.org/2000/svg"
+              >
+                <path
+                  d="M12 2L2 7v10c0 5.55 3.84 9.74 9 11 5.16-1.26 9-5.45 9-11V7l-10-5z"
+                  stroke="currentColor"
+                  stroke-width="2"
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                />
+                <path
+                  d="M9 12l2 2 4-4"
+                  stroke="currentColor"
+                  stroke-width="2"
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                />
+              </svg>
+            </div>
+            <h3 class="service__title">Landing Page Conversion</h3>
+            <p class="service__description">
+              Landing page yang dioptimasi untuk konversi tinggi dengan design
+              yang menarik dan copywriting yang persuasif untuk meningkatkan
+              penjualan Anda.
+            </p>
+            <ul class="service__features">
+              <li>Conversion Rate Optimization</li>
+              <li>A/B Testing Ready</li>
+              <li>Lead Generation Form</li>
+              <li>Analytics Integration</li>
+            </ul>
+            <div class="service__price">Mulai dari Rp 800K</div>
+          </div>
+
+          <div class="service__card service__card--featured">
+            <div class="service__badge">Terpopuler</div>
+            <div class="service__icon">
+              <svg
+                viewBox="0 0 24 24"
+                fill="none"
+                xmlns="http://www.w3.org/2000/svg"
+              >
+                <path
+                  d="M3 3h18v18H3V3z"
+                  stroke="currentColor"
+                  stroke-width="2"
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                />
+                <path
+                  d="M9 9h6v6H9V9z"
+                  stroke="currentColor"
+                  stroke-width="2"
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                />
+              </svg>
+            </div>
+            <h3 class="service__title">E-commerce Complete</h3>
+            <p class="service__description">
+              Toko online lengkap dengan sistem pembayaran, manajemen produk,
+              dan dashboard admin yang user-friendly untuk mengelola bisnis
+              online Anda.
+            </p>
+            <ul class="service__features">
+              <li>Payment Gateway Integration</li>
+              <li>Inventory Management</li>
+              <li>Order Tracking System</li>
+              <li>Customer Dashboard</li>
+              <li>SEO Optimized</li>
+            </ul>
+            <div class="service__price">Mulai dari Rp 2.5jt</div>
+          </div>
+
+          <div class="service__card">
+            <div class="service__icon">
+              <svg
+                viewBox="0 0 24 24"
+                fill="none"
+                xmlns="http://www.w3.org/2000/svg"
+              >
+                <path
+                  d="M21 16V8a2 2 0 0 0-1-1.73l-7-4a2 2 0 0 0-2 0l-7 4A2 2 0 0 0 3 8v8a2 2 0 0 0 1 1.73l7 4a2 2 0 0 0 2 0l7-4A2 2 0 0 0 21 16z"
+                  stroke="currentColor"
+                  stroke-width="2"
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                />
+                <path
+                  d="M7.5 4.21l4.5 2.6 4.5-2.6"
+                  stroke="currentColor"
+                  stroke-width="2"
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                />
+                <path
+                  d="M7.5 19.79V14.6L3 12"
+                  stroke="currentColor"
+                  stroke-width="2"
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                />
+                <path
+                  d="M21 12l-4.5 2.6v5.19"
+                  stroke="currentColor"
+                  stroke-width="2"
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                />
+                <path
+                  d="M3.27 6.96L12 12.01l8.73-5.05"
+                  stroke="currentColor"
+                  stroke-width="2"
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                />
+                <path
+                  d="M12 22.08V12"
+                  stroke="currentColor"
+                  stroke-width="2"
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                />
+              </svg>
+            </div>
+            <h3 class="service__title">Company Profile</h3>
+            <p class="service__description">
+              Website company profile yang profesional untuk membangun
+              kredibilitas dan kepercayaan pelanggan terhadap bisnis Anda.
+            </p>
+            <ul class="service__features">
+              <li>Professional Design</li>
+              <li>About & Team Section</li>
+              <li>Service Portfolio</li>
+              <li>Contact Integration</li>
+            </ul>
+            <div class="service__price">Mulai dari Rp 1.2jt</div>
+          </div>
+        </div>
+      </div>
     </section>
 
     <!-- Pricing Section -->
-    <section class="pricing">
-        <div class="container">
-            <h2 class="section-title">Paket Harga Terjangkau</h2>
-            <div class="pricing-grid">
-                <div class="pricing-card">
-                    <h3>Starter</h3>
-                    <div class="price">Rp 500.000</div>
-                    <ul class="pricing-features">
-                        <li>1 Halaman Landing Page</li>
-                        <li>Desain Responsif</li>
-                        <li>Domain & Hosting 1 Tahun</li>
-                        <li>Form Kontak</li>
-                        <li>Optimasi Dasar SEO</li>
-                        <li>Revisi 3x</li>
-                    </ul>
-                    <a href="https://wa.me/6289663164143?text=Halo%20Bima%2C%20saya%20tertarik%20dengan%20paket%20Starter" class="cta-button">Pilih Paket</a>
-                </div>
-                <div class="pricing-card featured">
-                    <h3>Bisnis</h3>
-                    <div class="price">Rp 1.000.000</div>
-                    <ul class="pricing-features">
-                        <li>3 Halaman Website</li>
-                        <li>Desain Custom</li>
-                        <li>Domain & Hosting 1 Tahun</li>
-                        <li>SEO Optimization</li>
-                        <li>Google Analytics</li>
-                        <li>Social Media Integration</li>
-                        <li>Revisi 5x</li>
-                    </ul>
-                    <a href="https://wa.me/6289663164143?text=Halo%20Bima%2C%20saya%20tertarik%20dengan%20paket%20Bisnis" class="cta-button">Pilih Paket</a>
-                </div>
-                <div class="pricing-card">
-                    <h3>Premium</h3>
-                    <div class="price">Rp 2.000.000</div>
-                    <ul class="pricing-features">
-                        <li>5 Halaman Website</li>
-                        <li>Desain Premium Custom</li>
-                        <li>Domain & Hosting 1 Tahun</li>
-                        <li>Advanced SEO</li>
-                        <li>Admin Panel CMS</li>
-                        <li>E-commerce Ready</li>
-                        <li>SSL Certificate</li>
-                        <li>Revisi Unlimited</li>
-                        <li>Maintenance 3 Bulan</li>
-                    </ul>
-                    <a href="https://wa.me/6289663164143?text=Halo%20Bima%2C%20saya%20tertarik%20dengan%20paket%20Premium" class="cta-button">Pilih Paket</a>
-                </div>
-            </div>
+    <section class="pricing" id="pricing">
+      <div class="container">
+        <div class="section__header">
+          <span class="section__badge">Harga</span>
+          <h2 class="section__title">Paket Harga Transparan & Terjangkau</h2>
+          <p class="section__description">
+            Pilih paket yang sesuai dengan kebutuhan dan budget Anda. Semua
+            paket sudah termasuk domain, hosting, dan maintenance.
+          </p>
         </div>
+
+        <div class="pricing__grid">
+          <div class="pricing__card">
+            <div class="pricing__header">
+              <h3 class="pricing__title">Starter</h3>
+              <p class="pricing__subtitle">
+                Cocok untuk personal atau bisnis kecil
+              </p>
+            </div>
+            <div class="pricing__price">
+              <span class="pricing__currency">Rp</span>
+              <span class="pricing__amount">800</span>
+              <span class="pricing__period">ribu</span>
+            </div>
+            <ul class="pricing__features">
+              <li class="pricing__feature">
+                <svg
+                  class="pricing__check"
+                  viewBox="0 0 20 20"
+                  fill="currentColor"
+                >
+                  <path
+                    fill-rule="evenodd"
+                    d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z"
+                    clip-rule="evenodd"
+                  />
+                </svg>
+                1 Halaman Landing Page
+              </li>
+              <li class="pricing__feature">
+                <svg
+                  class="pricing__check"
+                  viewBox="0 0 20 20"
+                  fill="currentColor"
+                >
+                  <path
+                    fill-rule="evenodd"
+                    d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z"
+                    clip-rule="evenodd"
+                  />
+                </svg>
+                Responsive Design
+              </li>
+              <li class="pricing__feature">
+                <svg
+                  class="pricing__check"
+                  viewBox="0 0 20 20"
+                  fill="currentColor"
+                >
+                  <path
+                    fill-rule="evenodd"
+                    d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z"
+                    clip-rule="evenodd"
+                  />
+                </svg>
+                Domain & Hosting 1 Tahun
+              </li>
+              <li class="pricing__feature">
+                <svg
+                  class="pricing__check"
+                  viewBox="0 0 20 20"
+                  fill="currentColor"
+                >
+                  <path
+                    fill-rule="evenodd"
+                    d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z"
+                    clip-rule="evenodd"
+                  />
+                </svg>
+                Basic SEO Setup
+              </li>
+              <li class="pricing__feature">
+                <svg
+                  class="pricing__check"
+                  viewBox="0 0 20 20"
+                  fill="currentColor"
+                >
+                  <path
+                    fill-rule="evenodd"
+                    d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z"
+                    clip-rule="evenodd"
+                  />
+                </svg>
+                3x Revisi
+              </li>
+            </ul>
+            <a
+              href="https://wa.me/6289663164143?text=Halo%20Bima%2C%20saya%20tertarik%20dengan%20paket%20Starter"
+              class="pricing__btn"
+              >Pilih Paket</a
+            >
+          </div>
+
+          <div class="pricing__card pricing__card--featured">
+            <div class="pricing__badge">Terpopuler</div>
+            <div class="pricing__header">
+              <h3 class="pricing__title">Professional</h3>
+              <p class="pricing__subtitle">
+                Ideal untuk bisnis yang berkembang
+              </p>
+            </div>
+            <div class="pricing__price">
+              <span class="pricing__currency">Rp</span>
+              <span class="pricing__amount">1.5</span>
+              <span class="pricing__period">juta</span>
+            </div>
+            <ul class="pricing__features">
+              <li class="pricing__feature">
+                <svg
+                  class="pricing__check"
+                  viewBox="0 0 20 20"
+                  fill="currentColor"
+                >
+                  <path
+                    fill-rule="evenodd"
+                    d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z"
+                    clip-rule="evenodd"
+                  />
+                </svg>
+                5 Halaman Website
+              </li>
+              <li class="pricing__feature">
+                <svg
+                  class="pricing__check"
+                  viewBox="0 0 20 20"
+                  fill="currentColor"
+                >
+                  <path
+                    fill-rule="evenodd"
+                    d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z"
+                    clip-rule="evenodd"
+                  />
+                </svg>
+                Custom Design
+              </li>
+              <li class="pricing__feature">
+                <svg
+                  class="pricing__check"
+                  viewBox="0 0 20 20"
+                  fill="currentColor"
+                >
+                  <path
+                    fill-rule="evenodd"
+                    d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z"
+                    clip-rule="evenodd"
+                  />
+                </svg>
+                Advanced SEO
+              </li>
+              <li class="pricing__feature">
+                <svg
+                  class="pricing__check"
+                  viewBox="0 0 20 20"
+                  fill="currentColor"
+                >
+                  <path
+                    fill-rule="evenodd"
+                    d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z"
+                    clip-rule="evenodd"
+                  />
+                </svg>
+                Google Analytics
+              </li>
+              <li class="pricing__feature">
+                <svg
+                  class="pricing__check"
+                  viewBox="0 0 20 20"
+                  fill="currentColor"
+                >
+                  <path
+                    fill-rule="evenodd"
+                    d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z"
+                    clip-rule="evenodd"
+                  />
+                </svg>
+                5x Revisi
+              </li>
+              <li class="pricing__feature">
+                <svg
+                  class="pricing__check"
+                  viewBox="0 0 20 20"
+                  fill="currentColor"
+                >
+                  <path
+                    fill-rule="evenodd"
+                    d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z"
+                    clip-rule="evenodd"
+                  />
+                </svg>
+                2 Bulan Support
+              </li>
+            </ul>
+            <a
+              href="https://wa.me/6289663164143?text=Halo%20Bima%2C%20saya%20tertarik%20dengan%20paket%20Professional"
+              class="pricing__btn"
+              >Pilih Paket</a
+            >
+          </div>
+
+          <div class="pricing__card">
+            <div class="pricing__header">
+              <h3 class="pricing__title">Enterprise</h3>
+              <p class="pricing__subtitle">Solusi lengkap untuk perusahaan</p>
+            </div>
+            <div class="pricing__price">
+              <span class="pricing__currency">Rp</span>
+              <span class="pricing__amount">3</span>
+              <span class="pricing__period">juta</span>
+            </div>
+            <ul class="pricing__features">
+              <li class="pricing__feature">
+                <svg
+                  class="pricing__check"
+                  viewBox="0 0 20 20"
+                  fill="currentColor"
+                >
+                  <path
+                    fill-rule="evenodd"
+                    d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z"
+                    clip-rule="evenodd"
+                  />
+                </svg>
+                Unlimited Pages
+              </li>
+              <li class="pricing__feature">
+                <svg
+                  class="pricing__check"
+                  viewBox="0 0 20 20"
+                  fill="currentColor"
+                >
+                  <path
+                    fill-rule="evenodd"
+                    d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z"
+                    clip-rule="evenodd"
+                  />
+                </svg>
+                E-commerce Ready
+              </li>
+              <li class="pricing__feature">
+                <svg
+                  class="pricing__check"
+                  viewBox="0 0 20 20"
+                  fill="currentColor"
+                >
+                  <path
+                    fill-rule="evenodd"
+                    d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z"
+                    clip-rule="evenodd"
+                  />
+                </svg>
+                Admin Dashboard
+              </li>
+              <li class="pricing__feature">
+                <svg
+                  class="pricing__check"
+                  viewBox="0 0 20 20"
+                  fill="currentColor"
+                >
+                  <path
+                    fill-rule="evenodd"
+                    d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z"
+                    clip-rule="evenodd"
+                  />
+                </svg>
+                SSL Certificate
+              </li>
+              <li class="pricing__feature">
+                <svg
+                  class="pricing__check"
+                  viewBox="0 0 20 20"
+                  fill="currentColor"
+                >
+                  <path
+                    fill-rule="evenodd"
+                    d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z"
+                    clip-rule="evenodd"
+                  />
+                </svg>
+                Unlimited Revisi
+              </li>
+              <li class="pricing__feature">
+                <svg
+                  class="pricing__check"
+                  viewBox="0 0 20 20"
+                  fill="currentColor"
+                >
+                  <path
+                    fill-rule="evenodd"
+                    d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z"
+                    clip-rule="evenodd"
+                  />
+                </svg>
+                6 Bulan Support
+              </li>
+            </ul>
+            <a
+              href="https://wa.me/6289663164143?text=Halo%20Bima%2C%20saya%20tertarik%20dengan%20paket%20Enterprise"
+              class="pricing__btn"
+              >Pilih Paket</a
+            >
+          </div>
+        </div>
+      </div>
     </section>
 
-    <!-- Testimonials Section -->
-    <section class="testimonials">
-        <div class="container">
-            <h2 class="section-title">Kata Mereka Tentang Kami</h2>
-            <div class="testimonials-grid">
-                <div class="testimonial-card">
-                    <p>Website toko online saya dibuat dengan sangat profesional dan loading speednya cepat. Penjualan online saya meningkat 300% setelah menggunakan jasa Bima Freelance!</p>
-                    <div class="testimonial-author">- Sarah Putri, Owner Toko Fashion Online</div>
-                </div>
-                <div class="testimonial-card">
-                    <p>Pelayanan yang ramah dan responsif. Website company profile kami selesai tepat waktu dengan hasil yang melampaui ekspektasi. Sangat recommended!</p>
-                    <div class="testimonial-author">- Andi Wijaya, CEO PT. Maju Bersama</div>
-                </div>
-                <div class="testimonial-card">
-                    <p>Harga terjangkau tapi kualitas premium. Website portofolio saya terlihat sangat profesional dan banyak klien yang tertarik setelah melihatnya.</p>
-                    <div class="testimonial-author">- Dinda Maharani, Fotografer Freelance</div>
-                </div>
-            </div>
+    <!-- Testimonials -->
+    <section class="testimonials" id="testimonials">
+      <div class="container">
+        <div class="section__header">
+          <span class="section__badge">Testimoni</span>
+          <h2 class="section__title">
+            Kata Mereka yang Telah Merasakan Hasilnya
+          </h2>
+          <p class="section__description">
+            Kepuasan klien adalah prioritas utama kami. Berikut testimoni dari
+            berbagai klien yang telah mempercayakan project website mereka
+            kepada kami.
+          </p>
         </div>
+
+        <div class="testimonials__grid">
+          <div class="testimonial__card">
+            <div class="testimonial__content">
+              <div class="testimonial__stars">
+                <span>⭐⭐⭐⭐⭐</span>
+              </div>
+              <p class="testimonial__text">
+                "Website toko online yang dibuat Bima sangat profesional dan
+                user-friendly. Penjualan kami meningkat 300% dalam 3 bulan
+                pertama setelah launching!"
+              </p>
+            </div>
+            <div class="testimonial__author">
+              <img
+                src="https://images.unsplash.com/photo-1494790108755-2616b612b47c?w=60&h=60&fit=crop&crop=face"
+                alt="Sarah Putri"
+                class="testimonial__avatar"
+              />
+              <div class="testimonial__info">
+                <h4 class="testimonial__name">Sarah Putri</h4>
+                <p class="testimonial__role">Owner Fashion Store</p>
+              </div>
+            </div>
+          </div>
+
+          <div class="testimonial__card">
+            <div class="testimonial__content">
+              <div class="testimonial__stars">
+                <span>⭐⭐⭐⭐⭐</span>
+              </div>
+              <p class="testimonial__text">
+                "Pelayanan yang sangat responsif dan hasil yang melampaui
+                ekspektasi. Website company profile kami sekarang terlihat
+                sangat profesional dan modern."
+              </p>
+            </div>
+            <div class="testimonial__author">
+              <img
+                src="https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?w=60&h=60&fit=crop&crop=face"
+                alt="Andi Wijaya"
+                class="testimonial__avatar"
+              />
+              <div class="testimonial__info">
+                <h4 class="testimonial__name">Andi Wijaya</h4>
+                <p class="testimonial__role">CEO PT. Maju Bersama</p>
+              </div>
+            </div>
+          </div>
+
+          <div class="testimonial__card">
+            <div class="testimonial__content">
+              <div class="testimonial__stars">
+                <span>⭐⭐⭐⭐⭐</span>
+              </div>
+              <p class="testimonial__text">
+                "Harga sangat terjangkau untuk kualitas premium. Website
+                portfolio saya membantu mendapatkan banyak klien baru. Highly
+                recommended!"
+              </p>
+            </div>
+            <div class="testimonial__author">
+              <img
+                src="https://images.unsplash.com/photo-1438761681033-6461ffad8d80?w=60&h=60&fit=crop&crop=face"
+                alt="Dinda Maharani"
+                class="testimonial__avatar"
+              />
+              <div class="testimonial__info">
+                <h4 class="testimonial__name">Dinda Maharani</h4>
+                <p class="testimonial__role">Fotografer Freelance</p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- CTA Section -->
+    <section class="cta">
+      <div class="container">
+        <div class="cta__content">
+          <h2 class="cta__title">Siap Wujudkan Website Impian Anda?</h2>
+          <p class="cta__description">
+            Konsultasi gratis untuk membahas kebutuhan website Anda. Dapatkan
+            penawaran terbaik dan mulai project hari ini juga!
+          </p>
+          <div class="cta__actions">
+            <a
+              href="https://wa.me/6289663164143?text=Halo%20Bima%2C%20saya%20ingin%20konsultasi%20gratis%20untuk%20pembuatan%20website"
+              class="btn btn--primary btn--large"
+            >
+              <svg
+                width="20"
+                height="20"
+                viewBox="0 0 24 24"
+                fill="currentColor"
+              >
+                <path
+                  d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893A11.821 11.821 0 0020.465 3.516"
+                />
+              </svg>
+              Konsultasi Gratis Sekarang
+            </a>
+            <a href="#portfolio" class="btn btn--outline btn--large"
+              >Lihat Portfolio</a
+            >
+          </div>
+        </div>
+      </div>
     </section>
 
     <!-- Footer -->
-    <footer>
-        <div class="container">
-            <div class="footer-content">
-                <h3>Siap Memulai Proyek Website Anda?</h3>
-                <p>Konsultasi gratis dan dapatkan penawaran terbaik untuk kebutuhan website Anda</p>
-                <a href="https://wa.me/6289663164143?text=Halo%20Bima%2C%20saya%20ingin%20konsultasi%20untuk%20pembuatan%20website" class="cta-button" style="margin-top: 1rem;">Hubungi Kami Sekarang</a>
+    <footer class="footer">
+      <div class="container">
+        <div class="footer__content">
+          <div class="footer__brand">
+            <div class="footer__logo">
+              <svg
+                class="footer__logo-icon"
+                viewBox="0 0 50 50"
+                fill="none"
+                xmlns="http://www.w3.org/2000/svg"
+              >
+                <circle
+                  cx="25"
+                  cy="25"
+                  r="23"
+                  stroke="currentColor"
+                  stroke-width="2"
+                />
+                <path
+                  d="M15 20h10v3H15v-3zm0 5h15v3H15v-3zm0 5h12v3H15v-3z"
+                  fill="currentColor"
+                />
+                <circle cx="35" cy="15" r="3" fill="currentColor" />
+              </svg>
+              <span class="footer__logo-text">BimaFreelance</span>
             </div>
-            <div class="footer-links">
-                <a href="mailto:bima.freelance@gmail.com">Email</a>
-                <a href="https://wa.me/6289663164143">WhatsApp</a>
-                <a href="#">Portfolio</a>
+            <p class="footer__description">
+              Spesialis pembuatan website profesional dengan hasil berkualitas
+              tinggi dan harga terjangkau. Wujudkan website impian bisnis Anda
+              bersama kami.
+            </p>
+          </div>
+
+          <div class="footer__links">
+            <div class="footer__section">
+              <h4 class="footer__title">Layanan</h4>
+              <ul class="footer__list">
+                <li><a href="#services">Landing Page</a></li>
+                <li><a href="#services">E-commerce</a></li>
+                <li><a href="#services">Company Profile</a></li>
+                <li><a href="#services">Portfolio Website</a></li>
+              </ul>
             </div>
-            <p>&copy; 2025 Bima Freelance. All rights reserved.</p>
+
+            <div class="footer__section">
+              <h4 class="footer__title">Perusahaan</h4>
+              <ul class="footer__list">
+                <li><a href="#portfolio">Portfolio</a></li>
+                <li><a href="#testimonials">Testimoni</a></li>
+                <li><a href="#pricing">Harga</a></li>
+                <li><a href="#home">Tentang Kami</a></li>
+              </ul>
+            </div>
+
+            <div class="footer__section">
+              <h4 class="footer__title">Kontak</h4>
+              <ul class="footer__list">
+                <li>
+                  <a href="https://wa.me/6289663164143">
+                    <svg
+                      width="16"
+                      height="16"
+                      viewBox="0 0 24 24"
+                      fill="currentColor"
+                    >
+                      <path
+                        d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893A11.821 11.821 0 0020.465 3.516"
+                      />
+                    </svg>
+                    +62 896-6316-4143
+                  </a>
+                </li>
+                <li>
+                  <a href="mailto:admin@bimafreelance.site">
+                    <svg
+                      width="16"
+                      height="16"
+                      viewBox="0 0 24 24"
+                      fill="currentColor"
+                    >
+                      <path
+                        d="M20 4H4c-1.1 0-1.99.9-1.99 2L2 18c0 1.1.9 2 2 2h16c1.1 0 2-.9 2-2V6c0-1.1-.9-2-2-2zm0 4l-8 5-8-5V6l8 5 8-5v2z"
+                      />
+                    </svg>
+                    admin@bimafreelance.site
+                  </a>
+                </li>
+              </ul>
+            </div>
+          </div>
         </div>
+
+        <div class="footer__bottom">
+          <p>&copy; 2025 BimaFreelance. All rights reserved.</p>
+          <p>Dibuat dengan ❤️ untuk membantu bisnis Anda berkembang</p>
+        </div>
+      </div>
     </footer>
 
-    <script>
-        // Smooth scrolling for anchor links
-        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
-            anchor.addEventListener('click', function (e) {
-                e.preventDefault();
-                document.querySelector(this.getAttribute('href')).scrollIntoView({
-                    behavior: 'smooth'
-                });
-            });
-        });
-
-        // Add animation on scroll
-        const observerOptions = {
-            threshold: 0.1,
-            rootMargin: '0px 0px -50px 0px'
-        };
-
-        const observer = new IntersectionObserver((entries) => {
-            entries.forEach(entry => {
-                if (entry.isIntersecting) {
-                    entry.target.style.animation = 'fadeInUp 1s ease-out';
-                }
-            });
-        }, observerOptions);
-
-        // Observe all cards and sections
-        document.querySelectorAll('.feature-card, .service-item, .pricing-card, .testimonial-card').forEach(el => {
-            observer.observe(el);
-        });
-    </script>
-</body>
-  </html>
+    <script src="script.js"></script>
+  </body>
+</html>
